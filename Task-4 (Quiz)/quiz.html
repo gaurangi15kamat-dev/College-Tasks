@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+    <style>
+        body {
+    font-family: cursive;
+    background-color: #bfcfe8;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    background-color: #ffffff;
+    width: 520px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.quiz{
+    padding:20px 0;
+}
+
+.quiz h2{
+    font-size:25px;
+    color:darkgreen;
+    font-weight:600;
+}
+
+.btn{
+    background:#fff;
+    color:#222;
+    font-weight:500;
+    width:100%;
+    border:1px solid #222;
+    padding:10px;
+    margin:10px 0;
+    border-radius:4px;
+    text-align:left;
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.btn:hover:not([disabled]){
+    background:#222;
+    color:#fff;
+}
+
+.correct{
+    background: #16ac57 ;
+}
+
+.incorrect{
+    background:rgb(227, 91, 91);
+}
+
+.btn:disabled{
+    cursor:no-drop;
+}
+#next-btn{
+    background:darkgreen;
+    color:#fff;
+    font-weight:500;
+    width:150px;
+    border:0;
+    padding:10px;
+    margin:20px auto 0;
+    border-radius:4px;
+    cursor:pointer;
+    display:none;
+}
+
+#next-btn:hover:not([disabled]){
+    background: rgb(7, 121, 64);
+}
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="quiz">
+            <div id="timer" style="font-size:18px; font-weight: bold; color:darkred; margin-bottom:10px; text-align:right;">
+                Time Left : 10:00
+            </div>
+            <h2 id="question"> Question goes here </h2>
+            <div id="answer-buttons">
+                <button class="btn"> Answer 1 </button>
+                <button class="btn"> Answer 2 </button>
+                <button class="btn"> Answer 3 </button>
+                <button class="btn"> Answer 4 </button>
+            </div>
+            <button id="next-btn"> Next </button> 
+        </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
