@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+    body {
+    font-family: cursive;
+    background-color: #bfcfe8;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #ffffff;
+    width: 520px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+h2{
+    text-align:center;
+    color:darkgreen;
+}
+
+.form-group{
+    margin-bottom: 18px;
+}
+
+label{
+    font-size:17px;
+}
+
+.error{
+    color:red;
+    font-size: 14px;
+    display: none;
+    margin-top: 4px;
+}
+
+input[type="text"]{
+    width: 90%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button{
+    width:30%;
+    background-color:darkgreen;
+    border-radius:6px;
+    cursor:pointer;
+    border:none;
+    padding:12px;
+    color:white;
+    font-size:16px;
+    margin-top:10px;
+    margin: auto ;  
+    display:block; 
+}
+
+button:hover{
+    /*background-color: rgb(7, 121, 64);*/
+    background-color: rgba(0,0,0,0.15);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> QUIZ GAME </h2> 
+    <form id="quizForm" onsubmit="validateForm(event)">
+        <div class="form-group">
+            <label for="name"><b> Name: </b></label><br>
+            <input type="text" id="name" name="name">
+            <span id="nameError" class="error"> Please enter your Name </span>
+        </div>
+        <div class="form-group">
+            <label for="mno"><b> Mobile No.: </b></label><br>
+            <input type="text" id="mno" name="mno">
+            <span id="mnoError" class="error"> Mobile No. should be of 10 digits </span>
+        </div>
+        <div class="form-group">
+            <label for="class"><b> Class: </b></label><br>
+            <input type="text" id="class" name="class">
+            <span id="classError" class="error"> Please enter your Class</span>
+        </div>
+        <button type="submit"> START QUIZ </button>
+    </form>
+    </div>
+    <script>
+        function validateForm(event)
+        {
+            event.preventDefault();
+            let isValid=true;
+            const nameRegex=/^[A-Za-z\s]+$/;
+            const mobileRegex=/^[0-9]{10}$/;
+
+        //Name Validation
+        const name=document.getElementById('name').value.trim();
+        const nameError=document.getElementById('nameError');
+        if(!nameRegex.test(name))
+        {
+            nameError.style.display='block';
+            isValid=false;
+        }else{
+            nameError.style.display='none';
+        }
+
+        //Mobile Validation
+        const mno=document.getElementById('mno').value.trim();
+        const mnoError=document.getElementById('mnoError');
+        if(!mobileRegex.test(mno))
+        {
+            mnoError.style.display='block';
+            isValid=false;
+        }else{
+            mnoError.style.display='none';
+        }
+
+        //Class Validation
+        const classs=document.getElementById('class').value;
+        const classError=document.getElementById('classError');
+        if(classs==="")
+        {
+            classError.style.display='block';
+            isValid=false;
+        }else{
+            classError.style.display='none';
+        }
+        if(!isValid)
+        {
+            event.preventDefault();
+        }else{
+            window.location.href="quiz.html";
+        }
+        }    
+    </script>
+</body>
+</html>
