@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: cursive;
+            background-color: #bfcfe8;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 520px;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align: center;
+            color:crimson;
+        }
+
+        .detail{
+            font-size:16px;
+            margin-bottom:12px;
+        }
+
+        .label{
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #3b5be0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Details</h2>
+
+    <div class="detail"><span class="label">Name:</span> <span id="name"></span></div><br>
+    <div class="detail"><span class="label">Roll No:</span> <span id="rno"></span></div><br>
+    <div class="detail"><span class="label">Mobile No:</span> <span id="mno"></span></div><br>
+    <div class="detail"><span class="label">Email:</span> <span id="email"></span></div><br>
+    <div class="detail"><span class="label">City:</span> <span id="city"></span></div><br>
+    <div class="detail"><span class="label">State:</span> <span id="state"></span></div><br>
+    <div class="detail"><span class="label">Gender:</span> <span id="gender"></span></div><br>
+
+    <button onclick="goBack()">Back</button>
+</div>
+
+<script>
+    const data = JSON.parse(localStorage.getItem("studentData"));
+
+    if (data) {
+        document.getElementById("name").textContent = data.name;
+        document.getElementById("rno").textContent = data.rno;
+        document.getElementById("mno").textContent = data.mno;
+        document.getElementById("email").textContent = data.email;
+        document.getElementById("city").textContent = data.city;
+        document.getElementById("state").textContent = data.state;
+        document.getElementById("gender").textContent = data.gender;
+    }
+
+    function goBack() {
+        window.location.href = "student.html";
+    }
+</script>
+
+</body>
+</html>
