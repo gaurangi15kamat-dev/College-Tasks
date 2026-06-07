@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+    background-color: #bfcfe8;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #ffffff;
+    width: 520px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+h2{
+    text-align: center;
+    color:crimson;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    font-size: 17px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input[type="radio"] {
+    margin-right: 6px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    display: none;
+    margin-top: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+button:hover {
+    background-color: #3b5be0;
+}
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h2> Student Registration Form </h2> 
+    <form id="studentForm" onsubmit="validateForm(event)">
+        <div class="form-group">
+            <label for="name"><b> Student Name:</b></label><br>
+            <input type="text" id="name" name="name">
+            <span id="nameError" class="error"> Please enter your Name </span>
+        </div>
+        <div class="form-group">
+            <label for="rno"><b> Roll No: </b></label><br>
+            <input type="text" id="rno" name="rno">
+            <span id="rnoError" class="error"> Please enter the Roll No.</span>
+        </div>
+        <div class="form-group">
+            <label for="mno"><b> Student Mobile No.: </b></label><br>
+            <input type="text" id="mno" name="mno">
+            <span id="mnoError" class="error"> Mobile No. should be of 10 digits </span>
+        </div>
+        <div class="form-group">
+            <label for="email"><b> Email ID: </b></label><br>
+            <input type="text" id="email" name="email">
+            <span id="emailError" class="error"> Please enter a valid email address </span>
+        </div>
+        <div class="form-group">
+            <label for="city"><b> City:</b> </label><br>
+            <input type="text" id="city" name="city">
+            <span id="cityError" class="error"> Please enter the City Name </span>
+        </div>
+        <div class="form-group">
+            <label for="state"><b> State:</b> </label><br>
+            <input type="text" id="state" name="state">
+            <span id="stateError" class="error"> Please enter the State </span>
+        </div>
+        <div class="form-group">
+            <label for="gender"><b> Gender: </b></label><br>
+            <input type="radio" id="male" name="gender" value="male"> Male <br>
+            <input type="radio" id="female" name="gender" value="female"> Female <br>
+            <input type="radio" id="other" name="gender" value="other"> Other 
+            <span id="genderError" class="error"> Please select the Gender </span> 
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    <script>
+        function validateForm(event)
+        {
+            event.preventDefault();
+            let isValid=true;
+            const nameRegex=/^[A-Za-z\s]+$/;
+            const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const rnoRegex=/^[0-9]{1,3}$/;
+            const mobileRegex=/^[0-9]{10}$/;
+            const cityRegex=/^[A-Za-z\s]+$/;
+            const stateRegex=/^[A-Za-z\s]+$/;
+
+        //Name Validation
+        const name=document.getElementById('name').value.trim();
+        const nameError=document.getElementById('nameError');
+        if(!nameRegex.test(name))
+        {
+            nameError.style.display='block';
+            isValid=false;
+        }else{
+            nameError.style.display='none';
+        }
+
+        //Email Validation
+        const email=document.getElementById('email').value;
+        const emailError=document.getElementById('emailError');
+        if(!emailRegex.test(email))
+        {
+            emailError.style.display='block';
+            isValid=false;
+        }else{
+            emailError.style.display='none';
+        }
+
+        //Rno Validation
+        const rno =document.getElementById('rno').value;
+        const rnoError=document.getElementById('rnoError');
+        if(!rnoRegex.test(rno))
+        {
+            rnoError.style.display='block';
+            isValid=false;
+        }else{
+            rnoError.style.display='none';
+        }
+
+        //Mobile Validation
+        const mno=document.getElementById('mno').value;
+        const mnoError=document.getElementById('mnoError');
+        if(!mobileRegex.test(mno))
+        {
+            mnoError.style.display='block';
+            isValid=false;
+        }else{
+            mnoError.style.display='none';
+        }
+
+        //City Validation
+        const city=document.getElementById('city').value;
+        const cityError=document.getElementById('cityError');
+        if(!cityRegex.test(city))
+        {
+            cityError.style.display='block';
+            isValid=false;
+        }else{
+            cityError.style.display='none';
+        }
+
+        //State Validation
+        const state=document.getElementById('state').value;
+        const stateError=document.getElementById('stateError');
+        if(!stateRegex.test(state))
+        {
+            stateError.style.display='block';
+            isValid=false;
+        }else{
+            stateError.style.display='none';
+        }
+
+        //Gender Validation
+        const genderError = document.getElementById('genderError');
+        const genderSelected = document.querySelector('input[name="gender"]:checked');
+
+        if (!genderSelected) {
+           genderError.style.display = 'block';
+           isValid = false;
+        } else {
+           genderError.style.display = 'none';
+        }
+        if (isValid) {
+           const gender = document.querySelector('input[name="gender"]:checked').value;
+
+           const studentData = {
+            name: name,
+            rno: rno,
+            mno: mno,
+            email: email,
+            city: city,
+            state: state,
+            gender: gender
+        };
+        localStorage.setItem("studentData", JSON.stringify(studentData));
+        window.location.href = "display.html";
+    }
+}
+
+    </script>
+</body>
+</html>
